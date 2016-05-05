@@ -1,61 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 
 <head>
   <title>Reflexion Health</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.8/angular-material.min.css">
   <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="styles/notifications.css" />
 </head>
 
-<body ng-app="app">
-  <header>
-    <nav class="group">
-      <ul class="nav-list left">
-        <li class="nav-list-item search">
-          <i class="fa fa-search"></i>
-        </li>
-        <li class="nav-list-item">
-          <span>Patients</span>
-        </li>
-        <li class="nav-list-item">
-          <span>Protocols</span>
-        </li>
-        <li class="nav-list-item">
-          <span>Clinicians</span>
-        </li>
-      </ul>
-      <ul class="nav-list right">
-        <li class="nav-list-item notifications">
-          <i class="fa fa-bell-o"></i>
-        </li>
-        <li class="nav-list-item">
-          <span class="clinician-name">John Doe</span><i class="fa fa-chevron-down"></i>
-        </li>
-      </ul>
-    </nav>
-  </header>
-  <div ng-controller="NotificationsController as vm">
+<body>
 
-    <div ng-repeat="notification in vm.notifications">
-      <!--{{notification | json}}-->
-      <span>{{notification.patient_name}}</span>
-      <br>
-      <span>{{notification.timestamp | date}}</span>
-      <br>
-      <p>
-        {{notification.message}}
-      </p>
+  <!--//component -->
+  <my-navbar></my-navbar>
 
-      <button ng-click="notification.getMessage()">Click me</button>
 
-      <p>
-        {{notification.getMessage()}}
-      </p>
-    </div>
-    {{vm.notifications | json}}
-  </div>
+  <!--scripts-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.8/angular-material.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-animate.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-aria.min.js"></script>
   <script src="app/app.module.js"></script>
+  <script src="app/navbar/mynavbar.component.js"></script>
   <script src="app/notifications/notifications.module.js"></script>
   <script src="app/notifications/notifications.controller.js"></script>
   <script src="app/notifications/notification.model.js"></script>

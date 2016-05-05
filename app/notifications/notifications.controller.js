@@ -5,38 +5,38 @@
         .module('app.notifications')
         .controller('NotificationsController', NotificationsController);
 
-    NotificationsController.$inject = ['NotificationService'];
-    function NotificationsController(NotificationService) {
+    NotificationsController.$inject = ['NotificationService', '$timeout'];
+    function NotificationsController(NotificationService, $timeout) {
         var vm = this;
-        vm.notifications = []
+        vm.notifications = [];
+        vm.spinner = true;
+        vm.showNotifications = showNotifications;
 
-        activate();
+        //simulating delay xhr call, to show spinner
+        // activate();
+        $timeout(activate, 1600)
 
         ////////////////
 
         function activate() {
-            // $http.get('notifications.json')
-            //     .then(onGetOK)
-            //     .catch(onGetError)
-
-            // function onGetOK(res) {
-            //     if (Array.isArray(res.data))
-            //         return vm.notifications = refactorData(res.data)
-            // }
-
-            // function onGetError(error) {
-            //     console.error(error)
-            // }
 
             NotificationService.getNotifications()
-            .then(onGetOk)
-            
-            function onGetOk(notifications){
+                .then(onGetOk)
+                .finally(hideSpinner)
+
+            function onGetOk(notifications) {
                 vm.notifications = notifications
             }
-            
-            
 
+            function hideSpinner() {
+                vm.spinner = false;
+            }
+
+
+
+        }
+        function showNotifications(e) {
+            console.info('open');
         }
 
 

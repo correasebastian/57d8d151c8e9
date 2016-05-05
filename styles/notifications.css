@@ -1,0 +1,28 @@
+*.icon-blue {color: #0088cc}
+*.icon-grey {color: grey}
+
+i {
+    width:100px;
+    text-align:center;
+    vertical-align:middle;
+}
+
+.fa {
+    position: relative;
+}
+
+.badge {
+    font-size: 0.6em;
+    display: block;
+    position: absolute;
+    top: -1.25em;
+    right: 3.2em;
+    width: 2em;
+    height: 2em;
+    line-height: 2em;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    background: rgba(241, 20, 20, 0.74);
+    font-weight: bold;
+}

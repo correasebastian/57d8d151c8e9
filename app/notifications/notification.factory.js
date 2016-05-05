@@ -5,8 +5,11 @@
         .module('app.notifications')
         .factory('NotificationService', NotificationService);
 
-    NotificationService.$inject = ['$http', 'NotificationModel'];
-    function NotificationService($http, NotificationModel) {
+    NotificationService.$inject = ['$http', 'NotificationModel', '$q'];
+    
+    // controller
+    function NotificationService($http, NotificationModel, $q) {
+        var notifications = [];
         var service = {
             getNotifications: getNotifications
         };
@@ -15,14 +18,22 @@
 
         ////////////////
         function getNotifications() {
+
+            //cache
+            if (notifications.length>0)
+                return $q.when(notifications)
+
+
             return $http.get('notifications.json')
                 .then(onGetOK)
                 .catch(onGetError)
 
             function onGetOK(res) {
+                // console.time('uno')
                 if (Array.isArray(res.data))
-                    return refactorData(res.data)
-                return []
+                    refactorData(res.data)
+                //  console.timeEnd('uno')
+                return notifications
             }
 
             function onGetError(error) {
@@ -33,7 +44,7 @@
 
 
         function refactorData(data) {
-            var notifications = []
+            // var notifications = []
             data.forEach(function (item) {
 
                 var latestIndex;
@@ -117,7 +128,8 @@
             //     return notification;
             // });
 
-            return notifications;
+            // return notifications;
+            return notifications
         }
 
     }

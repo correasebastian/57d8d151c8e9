@@ -18,7 +18,7 @@
         }
 
         Notification.prototype.getMessage = function () {
-            console.log('click')
+            // console.log('click')
             var msg = ''
             switch (this.type) {
                 case "exercise_trouble":
