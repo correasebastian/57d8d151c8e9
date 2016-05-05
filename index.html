@@ -46,8 +46,11 @@
         {{notification.message}}
       </p>
 
+      <button ng-click="notification.getMessage()">Click me</button>
 
-
+      <p>
+        {{notification.getMessage()}}
+      </p>
     </div>
     {{vm.notifications | json}}
   </div>
@@ -55,8 +58,8 @@
   <script src="app/app.module.js"></script>
   <script src="app/notifications/notifications.module.js"></script>
   <script src="app/notifications/notifications.controller.js"></script>
-    <script src="app/notifications/notification.model.js"></script>
-    <script src="app/notifications/notification.factory.js"></script>
+  <script src="app/notifications/notification.model.js"></script>
+  <script src="app/notifications/notification.factory.js"></script>
 </body>
 
 </html>

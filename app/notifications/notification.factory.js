@@ -112,10 +112,12 @@
 
             })
             // debugger;
-            return notifications.map(function (notification) {
-                notification.message = notification.getMessage();
-                return notification;
-            });
+            // return notifications.map(function (notification) {
+            //     notification.message = notification.getMessage();
+            //     return notification;
+            // });
+
+            return notifications;
         }
 
     }
