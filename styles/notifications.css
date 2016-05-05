@@ -1,3 +1,45 @@
+
+/*cards*/
+.notifications-bg{
+    background-color: #eff0f0
+}
+
+
+.notification-card  .notification-card-headline.assessment_needs_review > span {
+    color:#1fb0f8
+}
+
+.notification-card  .notification-card-headline.event_pain > span {
+    color:#fd571d
+}
+
+.notification-card   .notification-card-headline.exercise_trouble > span {
+    color:#ffb003
+}
+
+.notification-card  .notification-card-message {
+    color:#97a8bc
+}
+
+.notification-card  .notification-card-date {
+    color:#d0d2d2
+}
+
+button.link > span {
+    color:#1fb0f8
+}
+
+button.dismiss > span 
+{
+     color: rgba(148, 148, 156, 0.81);
+}
+
+
+
+
+
+/*badge*/
+
 *.icon-blue {color: #0088cc}
 *.icon-grey {color: grey}
 
@@ -25,4 +67,10 @@ i {
     color: #fff;
     background: rgba(241, 20, 20, 0.74);
     font-weight: bold;
+}
+
+/*dialog*/
+
+.dialog-header{
+    background-color: #2d4d6d !important;
 }

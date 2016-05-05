@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.notifications')
+        .module('app.not')
         .factory('NotificationModel', NotificationModel);
 
     NotificationModel.$inject = [];
@@ -33,6 +33,25 @@
 
             }
             return msg;
+        }
+
+        Notification.prototype.getIcon = function () {
+            // console.log('click')
+            var icon = ''
+            switch (this.type) {
+                case "exercise_trouble":
+                
+                    icon = 'fa-info-circle';
+                    break;
+                case "event_pain":
+                    icon = 'fa-exclamation-triangle'
+                    break;
+                case "assessment_needs_review":
+                    icon = "fa-pencil-square";
+                    break;
+
+            }
+            return icon;
         }
 
 

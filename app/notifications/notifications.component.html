@@ -1,0 +1,32 @@
+<md-toolbar class="dialog-header">
+    <div class="md-toolbar-tools">
+        <h2>Notifications</h2>
+        <span flex></span>
+        <md-button class="link" ng-click="vm.clearAll()">Clear All</md-button>
+    </div>
+</md-toolbar>
+<md-dialog-content>
+    <div class="md-dialog-content notifications-bg">
+     
+        <md-card  class="notification-card" ng-repeat="notification in vm.notifications">
+            <!--{{notification | json}}-->
+            <md-card-title>
+                <md-card-title-text>
+                    <div class="notification-card-headline {{notification.type}}" layout="row" flex>                      
+                        <span flex="95" class="md-headline">{{notification.patient_name}}</span>
+                        <span class="md-headline">  <i class="fa {{notification.getIcon()}}" aria-hidden="true"></i></span>
+                    </div>
+
+                    <span class="md-subhead notification-card-message">{{notification.getMessage()}}</span>
+                    <span class="md-subhead  notification-card-date">{{notification.timestamp | date : 'medium'}}</span>
+                </md-card-title-text>
+                
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="dismiss" ng-click="vm.dismiss(notification)">Dismiss </md-button>
+                <md-button ng-click="vm.goToSummary(notification)">Review</md-button>
+            </md-card-actions>
+        </md-card>
+        <md-card>
+    </div>
+</md-dialog-content>

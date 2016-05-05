@@ -4,6 +4,7 @@
     angular.module('app', [
         'ngMaterial',
         'app.myNavbar',
-        'app.notifications'
+        //notification
+        'app.not'
     ]);
 })();

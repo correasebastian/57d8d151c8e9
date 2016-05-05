@@ -18,10 +18,11 @@
         vm.notifications = [];
         vm.spinner = true;
         vm.showNotifications = showNotifications;
+        var useFullScreen = false
 
         //simulating delay xhr call, to show spinner
         // activate();
-        $timeout(activate, 1600)
+        $timeout(activate, 1200)
 
         ////////////////
 
@@ -43,10 +44,15 @@
 
         }
         function showNotifications(ev) {
-            console.info('open');
-            var useFullScreen = true
-            $mdDialog.show({
-                template: '<div>hola desde</div>',
+            if (!vm.notifications.length) {
+                alert('you dont have new notifications')
+                return
+            }
+
+
+
+            $mdDialog.show({                
+                templateUrl: 'app/navbar/dialog.html',
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose: true,

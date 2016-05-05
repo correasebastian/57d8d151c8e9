@@ -2,16 +2,19 @@
     'use strict';
 
     angular
-        .module('app.notifications')
+        .module('app.not')
         .factory('NotificationService', NotificationService);
 
-    NotificationService.$inject = ['$http', 'NotificationModel', '$q'];
-    
+    NotificationService.$inject = ['$http', 'NotificationModel', '$q', '$mdDialog'];
+
     // controller
-    function NotificationService($http, NotificationModel, $q) {
+    function NotificationService($http, NotificationModel, $q, $mdDialog) {
         var notifications = [];
+        var load = false;
         var service = {
-            getNotifications: getNotifications
+            getNotifications: getNotifications,
+            clearAll: clearAll,
+            dismiss: dismiss
         };
 
         return service;
@@ -20,7 +23,7 @@
         function getNotifications() {
 
             //cache
-            if (notifications.length>0)
+            if (load)
                 return $q.when(notifications)
 
 
@@ -33,6 +36,7 @@
                 if (Array.isArray(res.data))
                     refactorData(res.data)
                 //  console.timeEnd('uno')
+                load = true;
                 return notifications
             }
 
@@ -122,14 +126,22 @@
 
 
             })
-            // debugger;
-            // return notifications.map(function (notification) {
-            //     notification.message = notification.getMessage();
-            //     return notification;
-            // });
 
-            // return notifications;
             return notifications
+        }
+
+        function clearAll() {
+            //
+            //TODO HTTP CALLL TO CLEAR ALL             
+            notifications.splice(0, notifications.length);
+            $mdDialog.hide()
+        }
+
+        function dismiss(notification) {
+            var index = notifications.indexOf(notification);
+            alert('dissmising notification with id´s :' + JSON.stringify(notification.listEvents))
+            //TODO HTTP with the id's    
+            notifications.splice(index, 1);
         }
 
     }
