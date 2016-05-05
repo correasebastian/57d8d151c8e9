@@ -1,4 +1,4 @@
-#thannks you so much for the oportunity
+#thank you so much for the oportunity
 
 -I chose  angular 1.5.x (components) and angular-material
 - i created a model "Notification" with some methods to get the proper message to display 
