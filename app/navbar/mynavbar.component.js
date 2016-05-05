@@ -22,7 +22,7 @@
 
         //simulating delay xhr call, to show spinner
         // activate();
-        $timeout(activate, 1200)
+        $timeout(activate, 600)
 
         ////////////////
 
